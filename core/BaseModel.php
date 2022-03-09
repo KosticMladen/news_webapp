@@ -11,7 +11,7 @@
 
         public function test() {
             $statement = $this->pdo->query("SELECT users_fname FROM users WHERE id=1");
-            $result = $statement->fetch();
+            $result = $statement->fetch(\PDO::FETCH_ASSOC);
             return $result;
         }
     }
