@@ -4,10 +4,10 @@
 
     class SiteController extends Controller {
         public function home() {
-            echo $this->render('home');
+            return $this->render('home');
         }
 
         public function article() {
-            echo $this->render('article');
+            return $this->render('article');
         }
     }

@@ -10,7 +10,7 @@
 
     <title>Hello, world!</title>
   </head>
-  <body>
+  <body class="px-2">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Tech News</a>
@@ -36,18 +36,20 @@
                     </ul>
                     </li>
                 </ul>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li><a class="dropdown-item" href="#">Login</a></li>
-                        <li><a class="dropdown-item" href="#">Register</a></li>
-                    </ul>
-                </div>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                
+                
             </div>
         </div>
+        <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li><a class="dropdown-item" href="#">Login</a></li>
+                <li><a class="dropdown-item" href="#">Register</a></li>
+            </ul>
+        </div>
+        <form class="d-flex">
+            <input class="form-control me-2" size="70px" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
     </nav>
     <div class="container">
         {{content}}

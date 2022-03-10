@@ -2,7 +2,7 @@
     namespace app\core;
     class Application {
         public string $layout = 'main';
-        public BaseModel $model;
+        public Database $db;
         public ?Controller $controller = null;
         public View $view;
         public Router $router;
@@ -19,12 +19,12 @@
             $this->response = new Response();
             $this->router = new Router($this->request, $this->response);
 
-            $this->model = new BaseModel();
+            $this->db = new Database();
             $this->view = new View();
         }
 
         public function run() {
-            $this->router->resolve();
+            echo $this->router->resolve();
         }
 
         public function getController() {
