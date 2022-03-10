@@ -2,13 +2,14 @@
     namespace app\core;
 
     class Controller {
-        private $model;
+        public string $action = '';
+        public string $layout = 'main';
 
-        public function __construct(BaseModel $model) {
-             $this->model = $model;
+        public function setLayout($layout) {
+            $this->layout = $layout;
         }
 
-        public function test() {
-            return $this->model->test();
+        public function render($view, $params=[]) {
+            return Application::$app->view->renderView($view, $params);
         }
-    }
+    }   
