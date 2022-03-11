@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>News Web App</title>
   </head>
   <body class="px-2">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -22,17 +22,15 @@
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Latest News</a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="/article">Article</a>
-                    </li>
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Categories
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Computing</a></li>
-                        <li><a class="dropdown-item" href="#">Internet</a></li>
-                        <li><a class="dropdown-item" href="#">IT</a></li>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdownCategories">
+                        <?php $categories = app\controllers\SiteController::siteSetCategories(); ?>
+                        <?php foreach ($categories as $category) : ?>
+                            <li><a class="dropdown-item" id="<?= $category ?>"><?= ucfirst($category); ?></a></li>
+                        <?php endforeach; ?>
                     </ul>
                     </li>
                 </ul>

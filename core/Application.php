@@ -2,6 +2,8 @@
     namespace app\core;
     class Application {
         public string $layout = 'main';
+        public string $category = 'all';
+
         public Database $db;
         public ?Controller $controller = null;
         public View $view;
