@@ -24,6 +24,7 @@
         public function getDataByCategory(): array {
             $news_model = new NewsModel;
             $category = Application::$app->request->getBody();
+            
             if (!isset($category['category'])) {
                 $category=Application::$app->category;
                 $data = $news_model->getNews($category);
@@ -31,7 +32,7 @@
                 return $data;
             } else {
                 $data = $news_model->getNews($category['category']);
-
+                
                 return $data;
             }
         }
