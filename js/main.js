@@ -6,6 +6,15 @@ for (let li of categoriesAll) {
 	li.addEventListener('click', displayCategory);
 }
 
+
 function displayCategory() {
-    console.log(this.id);
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', '?category=' + this.id);
+    xhr.onload = () => {
+        if (xhr.status == 200) {
+            let content = this.response
+            console.log(content);
+        }
+    }
+    xhr.send();
 }
