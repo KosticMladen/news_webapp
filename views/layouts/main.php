@@ -22,20 +22,21 @@
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Latest News</a>
                     </li>
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Categories
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdownCategories">
-                        <?php $categories = app\controllers\SiteController::siteSetCategories(); ?>
-                        <?php foreach ($categories as $category) : ?>
-                            <li><a class="dropdown-item" id="<?= $category ?>"><?= ucfirst($category); ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                    </li>
+
+                    <?php if (app\core\Request::getStaticPath() === '/') : ?>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdownCategories">
+                            <?php $categories = app\controllers\SiteController::siteSetCategories(); ?>
+                            <?php foreach ($categories as $category) : ?>
+                                <li><a class="dropdown-item" id="<?= $category ?>"><?= ucfirst($category); ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                        </li>
+                    <?php endif; ?>
                 </ul>
-                
-                
             </div>
         </div>
         <div class="collapse navbar-collapse"  id="navbarSupportedContent">
@@ -44,10 +45,6 @@
                 <li><a class="dropdown-item" href="#">Register</a></li>
             </ul>
         </div>
-        <form class="d-flex">
-            <input class="form-control me-2" size="70px" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
     </nav>
     <div class="container">
         {{content}}

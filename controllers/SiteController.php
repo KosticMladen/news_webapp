@@ -11,7 +11,8 @@
         }
 
         public function article() {
-            return $this->render('article');
+            $params = $this->getRow();
+            return $this->render('article', $params);
         }
 
         public static function siteSetCategories(): array {
@@ -26,7 +27,7 @@
             $category = Application::$app->request->getBody();
             
             if (!isset($category['category'])) {
-                $category=Application::$app->category;
+                $category = Application::$app->category;
                 $data = $news_model->getNews($category);
 
                 return $data;
@@ -35,6 +36,14 @@
                 
                 return $data;
             }
+        }
+        # treba da vrati sliku naslov i tekst
+        public function getRow(): array {
+            $news_model = new NewsModel;
+            $id = Application::$app->request->getBody()['id'];
+            $data = $news_model->getArticle($id);
+            
+            return $data;
         }
 
     }

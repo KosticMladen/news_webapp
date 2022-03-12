@@ -14,7 +14,7 @@
 
         public function getNews($category) {
             if ($category === 'all') {
-                $statement = Application::$app->db->pdo->query('SELECT id, news_title, news_image FROM news');
+                $statement = Application::$app->db->pdo->query('SELECT id, news_title, news_image FROM news ORDER BY id DESC');
                 $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
                 return $result;
@@ -22,7 +22,7 @@
 
             //with $category argument;
             
-            $statement = Application::$app->db->pdo->prepare("SELECT id, news_title, news_image FROM news WHERE category LIKE :category");
+            $statement = Application::$app->db->pdo->prepare("SELECT id, news_title, news_image FROM news WHERE category LIKE :category ORDER BY id DESC");
             $statement->execute(array(':category' => $category));
             
             if ($statement->rowCount() === 0) {
@@ -31,5 +31,15 @@
                 $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
                 return $result;
             }
+        }
+
+        public function getArticle($id) {
+            $statement = Application::$app->db->prepare("SELECT news_title, news_image, news_body FROM news WHERE id=:id");
+            $statement->bindParam(':id', $id);
+            $statement->execute();
+
+            $data = $statement->fetch(\PDO::FETCH_ASSOC);
+
+            return $data;
         }
     }
