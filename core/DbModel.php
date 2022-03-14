@@ -29,11 +29,11 @@
             $statement = self::prepare("SELECT * FROM $tableName WHERE $sql");
 
             foreach ($where as $key => $item) {
-                $stetement->bindValue(":$key", $item);
+                $statement->bindValue(":$key", $item);
             }
 
             $statement->execute();
-            return $stetement->fetchObject(static::class);
+            return $statement->fetchObject(static::class);
         }
 
         public static function prepare($sql) {

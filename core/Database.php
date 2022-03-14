@@ -12,4 +12,19 @@
         public function prepare($sql) {
             return $this->pdo->prepare($sql);
         }
+
+        public function appGetUser($id) {
+            $query = "SELECT id, 
+                            users_fname, 
+                            users_lname, 
+                            users_email, 
+                            users_status 
+                        FROM users WHERE id=:id";
+            $statement = $this->prepare($query);
+            $statement->bindValue(':id', $id);
+            $statement->execute();
+            $result = $statement->fetch(\PDO::FETCH_ASSOC);
+
+            return $result;
+        }
     }

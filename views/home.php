@@ -1,3 +1,15 @@
+<?php var_dump($_SESSION) ?>
+<?php 
+    use app\core\Application;
+    if (Application::$app->session->checkForFlash('success')) {
+        echo '<div class="alert alert-success" role="alert">
+        ' . Application::$app->session->getFlash('success') . '
+        </div>';
+    }
+?>
+<?php if (isset($params[0]['category'])) : ?>
+    <h2>Category: <?= ucfirst($params[0]['category']) ?></h2>
+<?php endif; ?>
 <?php
     foreach ($params as $news) :
     /** '<img src="data:image/jpeg;base64,'.base64_encode( $result['image'] ).'"/>' */

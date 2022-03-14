@@ -1,11 +1,13 @@
 <?php
     namespace app\models;
+    use app\core\DbModel;
 
     class User extends DbModel {
-        public string $firstname = '';
-        public string $lastname = '';
-        public string $email = '';
-        public string $password = '';
+        public int $id = 0;
+        public string $users_fname = '';
+        public string $users_lname = '';
+        public string $users_email = '';
+        public string $users_password = '';
         public string $confirmPassword = '';
 
         public static function tableName(): string {
@@ -17,7 +19,7 @@
         }
 
         public function save() {
-            $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+            $this->users_password = password_hash($this->users_password, PASSWORD_DEFAULT);
 
             return parent::save();
         }
@@ -27,6 +29,6 @@
         }
 
         public function getDisplayName(): string {
-            return $this->firstname . ' ' . $this->lastname;
+            return $this->users_fname . ' ' . $this->users_lname;
         }
     }

@@ -22,7 +22,7 @@
 
             //with $category argument;
             
-            $statement = Application::$app->db->pdo->prepare("SELECT id, news_title, news_image FROM news WHERE category LIKE :category ORDER BY id DESC");
+            $statement = Application::$app->db->pdo->prepare("SELECT id, news_title, news_image, category FROM news WHERE category LIKE :category ORDER BY id DESC");
             $statement->execute(array(':category' => $category));
             
             if ($statement->rowCount() === 0) {

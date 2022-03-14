@@ -23,32 +23,6 @@
                     <a class="nav-link active" aria-current="page" href="/">Latest News</a>
                     </li>
 
-                    <?php if (app\core\Request::getStaticPath() === '/') : ?>
-                        <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categories
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdownCategories">
-                            <?php $categories = app\controllers\SiteController::siteSetCategories(); ?>
-                            <?php foreach ($categories as $category) : ?>
-                                <li><a class="dropdown-item" id="<?= $category ?>"><?= ucfirst($category); ?></a></li>
-                            <?php endforeach; ?>
-                        </ul>
-                        </li>
-                    <?php endif; ?>
-                </ul>
-            </div>
-        </div>
-        <div class="collapse navbar-collapse"  id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <?php if (\app\core\Application::$app->session->get('user')): ?>
-                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                <?php else: ?>
-                    <li><a class="dropdown-item" href="/login">Login</a></li>
-                    <li><a class="dropdown-item" href="/register">Register</a></li>
-                <?php endif; ?>
-            </ul>
-        </div>
     </nav>
     <div class="container">
         {{content}}
