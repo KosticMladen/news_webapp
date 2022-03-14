@@ -1,4 +1,3 @@
-<?php var_dump($_SESSION) ?>
 <?php 
     use app\core\Application;
     if (Application::$app->session->checkForFlash('success')) {

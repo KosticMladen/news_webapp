@@ -18,7 +18,7 @@
     <label class="form-label">Password</label>
     <input name="users_password" type="password" class="form-control">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">Log In</button>
   <a href="/" class="btn btn-primary">Cancel</a>
 </form>
 <small>Need An Account? Register <a href="/register">here!</a></small>
