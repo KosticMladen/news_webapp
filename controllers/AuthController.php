@@ -41,7 +41,7 @@
                 $user->loadData($request->getBody());
 
                 if ($this->registerValidation($user)) {
-                    Application::$app->session->setFlash('success', 'Account created successfully!');
+                    Application::$app->session->setFlash('success', 'Account created successfully! You can now <a href="/login">Log In here.</a>');
                     Application::$app->response->redirect('/');
                 }
 
@@ -53,7 +53,6 @@
         }
         
         public function registerValidation(\app\models\User $user) {
-            var_dump($user);
             $registrationErrors = [];
             if ($user->users_fname && $user->users_lname && $user->users_email && $user->users_password && $user->confirmPassword) {
                 if (filter_var($user->users_email, FILTER_VALIDATE_EMAIL) && 

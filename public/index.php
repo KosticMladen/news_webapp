@@ -3,6 +3,7 @@
     use app\core\Application;
     use app\controllers\SiteController;
     use app\controllers\AuthController;
+    use app\controllers\ArticleController;
 
     $app = new Application(dirname(__DIR__));
 
@@ -15,5 +16,11 @@
     
     $app->router->get('/register', [AuthController::class, 'register']);
     $app->router->post('/register', [AuthController::class, 'register']);
+
+    $app->router->get('/delete', [ArticleController::class, 'delete']);
+    $app->router->post('/delete', [ArticleController::class, 'delete']);
+
+    $app->router->get('/update', [ArticleController::class, 'update']);
+    $app->router->post('/update', [ArticleController::class, 'update']);
 
     $app->run();

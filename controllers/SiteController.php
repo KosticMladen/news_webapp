@@ -12,6 +12,7 @@
 
         public function article() {
             $params = $this->getRow();
+
             return $this->render('article', $params);
         }
 
