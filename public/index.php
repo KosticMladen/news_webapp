@@ -22,5 +22,8 @@
 
     $app->router->get('/update', [ArticleController::class, 'update']);
     $app->router->post('/update', [ArticleController::class, 'update']);
+    
+    $app->router->get('/newArticle', [ArticleController::class, 'newArticle']);
+    $app->router->post('/newArticle', [ArticleController::class, 'newArticle']);
 
     $app->run();

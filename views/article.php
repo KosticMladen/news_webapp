@@ -6,7 +6,7 @@
 ?>
 
 <h2 class="mb-4"><?= $params['news_title']; ?></h2>
-<?php if ($user['users_status'] === 'admin'): ?>
+<?php if ($user && $user['users_status'] === 'admin'): ?>
     <div class="mb-2">
         <a class="btn btn-danger" href="/delete?id=<?= $article_id ?>">Delete Article</a>
         <a class="btn btn-info" href="/update?id=<?= $article_id ?>">Update Article</a>

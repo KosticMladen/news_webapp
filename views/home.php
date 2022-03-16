@@ -16,7 +16,7 @@
 <div style="position: relative" class="my-4">
     <a href="/article?id=<?= $news['id']; ?>">
         <img height="600" src="data:image/jpeg;base64,<?php echo base64_encode($news['news_image']); ?>">
-        <h2 style="color:white; position: absolute; bottom: 8px; left:16px"><?= $news['news_title']; ?></h2>
+        <h2 style="color:white; position: absolute; bottom: 8px; left:16px; text-shadow: 2px 2px #000"><?= $news['news_title']; ?></h2>
     </a>
 </div>
 <?php endforeach; ?>

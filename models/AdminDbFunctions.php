@@ -53,4 +53,21 @@
             $statement->execute();
             return true;
         }
+
+        public function createArticle($data) {
+            $title = ucfirst(strtolower($data['news_title']));
+            $image = file_get_contents(addslashes($_FILES['news_image']['tmp_name']));
+            $body = $data['news_body'];
+            $category = strtolower($data['category']);
+
+            $statement = $this->prepare("INSERT INTO news (news_title, news_image, news_body, category) VALUES (:news_title, :news_image, :news_body, :category)");
+            $statement->execute(array(
+                ':news_title' => $title,
+                ':news_image' => $image,
+                ':news_body' => $body,
+                ':category' => $category
+            ));
+
+            return true;
+        }
     }

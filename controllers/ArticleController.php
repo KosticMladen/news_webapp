@@ -38,4 +38,22 @@
             $this->setLayout('updateDelete');
             return $this->render('update');
         }
+
+        public function newArticle(Request $request, Response $response) {
+            if ($request->isPost()) {
+                $data = $request->getBody();
+
+                if ($data['news_title'] && $data['news_body'] && $data['category']) {
+                    $this->adminDb->createArticle($data);
+                    
+                    Application::$app->session->setFlash('success', 'Article successfully created, <br><br> Click <a href="/newArticle">here</a> to add another.');
+                    $response->redirect('/');
+                } else {
+                    echo 'errors';
+                }
+            }
+
+            $this->setLayout('updateDelete');
+            return $this->render('newArticle');
+        }
     }

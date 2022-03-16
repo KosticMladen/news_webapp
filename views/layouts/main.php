@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Latest News</a>
+                        <a class="nav-link active" href="/">Latest News</a>
                     </li>
 
                     <?php if (app\core\Request::getStaticPath() === '/') : ?>
@@ -36,7 +36,18 @@
                         </ul>
                         </li>
                     <?php endif; ?>
+                    <?php 
+                        if (\app\core\Application::$app->user) {
+                            if (\app\core\Application::$app->user['users_status'] === 'admin') {
+                                echo '<li class="nav-item">
+                                <a class="nav-link active" href="/newArticle">New Article</a>
+                                </li>';
+                            }
+                        }
+                        
+                    ?>
                 </ul>
+                
             </div>
         </div>
         <div class="collapse navbar-collapse"  id="navbarSupportedContent">

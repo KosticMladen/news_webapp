@@ -1,5 +1,11 @@
 <?php
     use app\core\Application;
+
+    $user = Application::$app->user;
+    if (!$user || ($user['users_status'] !== 'admin')) {
+      Application::$app->response->redirect("/");
+    }
+
     use app\models\AdminDbFunctions;
 
     if (Application::$app->request->isGet()) {
