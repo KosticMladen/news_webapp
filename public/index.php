@@ -4,6 +4,7 @@
     use app\controllers\SiteController;
     use app\controllers\AuthController;
     use app\controllers\ArticleController;
+    use app\controllers\CommentsController;
 
     $app = new Application(dirname(__DIR__));
 
@@ -25,5 +26,11 @@
     
     $app->router->get('/newArticle', [ArticleController::class, 'newArticle']);
     $app->router->post('/newArticle', [ArticleController::class, 'newArticle']);
+
+    $app->router->post('/deleteComment', [CommentsController::class, 'deleteComment']);
+    $app->router->post('/deleteCommentRender', [CommentsController::class, 'deleteCommentRender']);
+    $app->router->post('/editCommentRender', [CommentsController::class, 'editCommentRender']);
+    $app->router->post('/editComment', [CommentsController::class, 'editComment']);
+    $app->router->post('/addComment', [CommentsController::class, 'addComment']);
 
     $app->run();

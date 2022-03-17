@@ -13,7 +13,7 @@
     $id = Application::$app->request->getBody()['id'] ?? false;
     $title = $admin->getArticleName($id);
 ?>
-<h1>Delete Article"<?php echo $title ?>"?</h1>
+<h1>Are You Sure You Want To Delete Article"<?php echo $title ?>"?</h1>
 <div class="mt-5">
     <form action="" method="post">
         <input name="id" type="hidden" value="<?= $id ? $id : '' ?>">

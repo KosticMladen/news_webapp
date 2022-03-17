@@ -5,6 +5,12 @@
   if (!$user || ($user['users_status'] !== 'admin')) {
     Application::$app->response->redirect("/");
   }
+
+  if (Application::$app->session->checkForFlash('error')) {
+      echo '<div class="alert alert-danger" role="alert">
+      ' . Application::$app->session->getFlash('error') . '
+      </div>';
+  }
 ?>
 <h1>Create New Article</h1>
 <form method="post" action='' enctype="multipart/form-data">

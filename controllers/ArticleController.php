@@ -49,7 +49,7 @@
                     Application::$app->session->setFlash('success', 'Article successfully created, <br><br> Click <a href="/newArticle">here</a> to add another.');
                     $response->redirect('/');
                 } else {
-                    echo 'errors';
+                    Application::$app->session->setFlash('error', 'All fields must be filled');
                 }
             }
 

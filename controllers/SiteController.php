@@ -3,6 +3,7 @@
     use app\core\Controller;
     use app\core\Application;
     use app\models\NewsModel;
+    use app\models\CommentModel;
 
     class SiteController extends Controller {
         public function home() {
@@ -11,7 +12,10 @@
         }
 
         public function article() {
-            $params = $this->getRow();
+            $commentModel = new CommentModel;
+            $params = [];
+            $params['article'] = $this->getRow();
+            $params['comments'] = $commentModel->allComments();
 
             return $this->render('article', $params);
         }
@@ -40,8 +44,14 @@
         }
         # treba da vrati sliku naslov i tekst
         public function getRow(): array {
+            $id = Application::$app->request->getBody()['id'] ?? false;
+            
+            if (!$id) {
+                Application::$app->response->redirect('/');
+            }
+
             $news_model = new NewsModel;
-            $id = Application::$app->request->getBody()['id'];
+            
             $data = $news_model->getArticle($id);
             
             return $data;
